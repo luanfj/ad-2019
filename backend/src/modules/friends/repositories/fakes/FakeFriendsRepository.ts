@@ -39,4 +39,8 @@ export default class FakeFriendsRepository implements IFriendsRepository {
 
     return friend
   }
+
+  public async findAllFriends(): Promise<Friend[]> {
+    return this.friends
+  }
 }
