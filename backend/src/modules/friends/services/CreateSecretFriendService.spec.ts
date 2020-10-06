@@ -1,3 +1,6 @@
+import { ObjectID } from 'mongodb'
+
+import AppError from '@shared/errors/AppError'
 import FakeFriendsRepository from '../repositories/fakes/FakeFriendsRepository'
 import FakeSecretFriendsRepository from '../repositories/fakes/FakeSecretFriendsRepository'
 import CreateSecretFriendService from './CreateSecretFriendService'
@@ -39,5 +42,19 @@ describe('CreateSecretFriend', () => {
       friend_id: friend.id,
       secret_friend_id: friend2.id
     })
+  })
+
+  it('should not be able to create a secret friend with inexistent secret', async () => {
+    const friend = await fakeFriendsRepository.create({
+      name: 'John Doe',
+      email: 'any@email.com'
+    })
+
+    await expect(
+      createSecretFriend.execute({
+        friend_id: friend.id,
+        secret_friend_id: new ObjectID()
+      })
+    ).rejects.toBeInstanceOf(AppError)
   })
 })

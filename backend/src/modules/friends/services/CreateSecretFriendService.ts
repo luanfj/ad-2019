@@ -19,8 +19,10 @@ export default class CreateSecretFriendService {
     friend_id,
     secret_friend_id
   }: ICreateSecretFriendDTO): Promise<void> {
-    const friend = this.friendsRepository.findById(friend_id)
-    const secret_friend = this.friendsRepository.findById(secret_friend_id)
+    const friend = await this.friendsRepository.findById(friend_id)
+    const secret_friend = await this.friendsRepository.findById(
+      secret_friend_id
+    )
 
     if (!friend) {
       throw new AppError('Friend does not exists.')
