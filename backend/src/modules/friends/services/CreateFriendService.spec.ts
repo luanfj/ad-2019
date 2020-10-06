@@ -1,3 +1,4 @@
+import AppError from '@shared/errors/AppError'
 import FakeFriendsRepository from '../repositories/fakes/FakeFriendsRepository'
 import CreateFriendService from './CreateFriendService'
 
@@ -18,5 +19,19 @@ describe('CreateFriend', () => {
     })
 
     expect(friend).toHaveProperty('id')
+  })
+
+  it('should not be able to create a new friend with same email from another', async () => {
+    await createFriend.execute({
+      name: 'John Doe',
+      email: 'any@email.com'
+    })
+
+    await expect(
+      createFriend.execute({
+        name: 'John Doe',
+        email: 'any@email.com'
+      })
+    ).rejects.toBeInstanceOf(AppError)
   })
 })
