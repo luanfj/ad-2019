@@ -12,7 +12,7 @@ interface IRequest {
 @injectable()
 export default class CreateFriendService {
   constructor(
-    @inject('UsersRepository')
+    @inject('FriendsRepository')
     private friendsRepository: IFriendsRepository
   ) {}
 

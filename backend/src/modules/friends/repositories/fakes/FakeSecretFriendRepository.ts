@@ -22,4 +22,20 @@ export default class FakeSecretFriendsRepository
 
     return secretFriend
   }
+
+  public async findFriendById(id: ObjectID): Promise<SecretFriend | undefined> {
+    const findSecret = this.secretFriends.find(
+      result => result.friend_id === id
+    )
+
+    return findSecret
+  }
+
+  public async findSecretById(id: ObjectID): Promise<SecretFriend | undefined> {
+    const findSecret = this.secretFriends.find(
+      result => result.secret_friend_id === id
+    )
+
+    return findSecret
+  }
 }

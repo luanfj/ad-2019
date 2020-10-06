@@ -1,6 +1,5 @@
-import { ObjectID } from 'mongodb'
-
 import AppError from '@shared/errors/AppError'
+import { ObjectID } from 'mongodb'
 import FakeFriendsRepository from '../repositories/fakes/FakeFriendsRepository'
 import UpdateFriendService from './UpdateFriendService'
 

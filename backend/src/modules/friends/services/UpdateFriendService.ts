@@ -27,7 +27,10 @@ export default class UpdateFriendService {
 
     const userWithUpdatedEmail = await this.friendsRepository.findByEmail(email)
 
-    if (userWithUpdatedEmail && userWithUpdatedEmail.id !== friend_id) {
+    if (
+      userWithUpdatedEmail &&
+      userWithUpdatedEmail.id.toString() !== friend.id.toString()
+    ) {
       throw new AppError('E-mail already in use')
     }
 

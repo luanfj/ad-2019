@@ -1,11 +1,11 @@
 import {
   Entity,
   ObjectIdColumn,
-  ObjectID,
-  Column,
   CreateDateColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
+  Column
 } from 'typeorm'
+import { ObjectID } from 'mongodb'
 
 @Entity('secret_friend')
 export default class SecretFriend {
@@ -13,10 +13,10 @@ export default class SecretFriend {
   id: ObjectID
 
   @Column()
-  friend_id: string
+  friend_id: ObjectID
 
   @Column()
-  secret_friend_id: string
+  secret_friend_id: ObjectID
 
   @CreateDateColumn()
   created_at: string
