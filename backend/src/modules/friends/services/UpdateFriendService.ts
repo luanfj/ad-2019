@@ -3,7 +3,7 @@ import { ObjectID } from 'mongodb'
 
 import AppError from '@shared/errors/AppError'
 import IFriendsRepository from '../repositories/IFriendsRepository'
-import Friend from '../infra/typeorm/entities/Friend'
+import Friend from '../infra/typeorm/schemas/Friend'
 
 interface IRequest {
   friend_id: ObjectID

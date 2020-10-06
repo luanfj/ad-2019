@@ -1,8 +1,7 @@
-import { v4 as uuid_v4 } from 'uuid'
 import { ObjectID } from 'mongodb'
 
 import ICreateFriendDTO from '@modules/friends/dtos/ICreateFriendDTO'
-import Friend from '@modules/friends/infra/typeorm/entities/Friend'
+import Friend from '@modules/friends/infra/typeorm/schemas/Friend'
 import IFriendsRepository from '../IFriendsRepository'
 
 export default class FakeFriendsRepository implements IFriendsRepository {
@@ -11,7 +10,12 @@ export default class FakeFriendsRepository implements IFriendsRepository {
   public async create(userData: ICreateFriendDTO): Promise<Friend> {
     const friend = new Friend()
 
-    Object.assign(friend, { id: uuid_v4(), ...userData })
+    Object.assign(friend, {
+      id: new ObjectID(),
+      ...userData,
+      created_at: new Date(),
+      updated_at: new Date()
+    })
 
     this.friends.push(friend)
 

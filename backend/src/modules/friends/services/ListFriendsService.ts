@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe'
 
 import IFriendsRepository from '../repositories/IFriendsRepository'
-import Friend from '../infra/typeorm/entities/Friend'
+import Friend from '../infra/typeorm/schemas/Friend'
 
 @injectable()
 export default class ListFriendsService {
