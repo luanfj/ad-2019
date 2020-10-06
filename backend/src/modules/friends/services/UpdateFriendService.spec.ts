@@ -39,4 +39,24 @@ describe('CreateFriend', () => {
       })
     ).rejects.toBeInstanceOf(AppError)
   })
+
+  it('should not be able to update to an existent email', async () => {
+    await fakeFriendsRepository.create({
+      name: 'John Doe',
+      email: 'any@email.com'
+    })
+
+    const friend = await fakeFriendsRepository.create({
+      name: 'John Doe',
+      email: 'any@test.com'
+    })
+
+    await expect(
+      updateFriendProfile.execute({
+        friend_id: friend.id,
+        name: 'John',
+        email: 'any@email.com'
+      })
+    ).rejects.toBeInstanceOf(AppError)
+  })
 })
