@@ -57,4 +57,18 @@ describe('CreateSecretFriend', () => {
       })
     ).rejects.toBeInstanceOf(AppError)
   })
+
+  it('should not be able to create a secret friend with inexistent friend', async () => {
+    const secretFriend = await fakeFriendsRepository.create({
+      name: 'John Doe',
+      email: 'any@email.com'
+    })
+
+    await expect(
+      createSecretFriend.execute({
+        friend_id: new ObjectID(),
+        secret_friend_id: secretFriend.id
+      })
+    ).rejects.toBeInstanceOf(AppError)
+  })
 })
