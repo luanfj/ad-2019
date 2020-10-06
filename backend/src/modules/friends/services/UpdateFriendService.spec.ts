@@ -7,7 +7,7 @@ import UpdateFriendService from './UpdateFriendService'
 let updateFriendProfile: UpdateFriendService
 let fakeFriendsRepository: FakeFriendsRepository
 
-describe('CreateFriend', () => {
+describe('UpdateFriend', () => {
   beforeEach(() => {
     fakeFriendsRepository = new FakeFriendsRepository()
 
