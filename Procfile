@@ -1,1 +1,1 @@
-web: cd frontend && yarn start
+web: cd frontend && npm run start
