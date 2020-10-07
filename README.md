@@ -31,5 +31,5 @@ $ docker run --name mongodb -p 27017:27017 -d -t mongo
 $ cd backend && yarn dev:server
 
 # Inicie o frontend
-$cd frontend && yarn start
+$ cd frontend && yarn start
 ```
