@@ -46,4 +46,8 @@ export default class SecretFriendsRepository
 
     return findSecret
   }
+
+  public async deleteAllSecretFriends(): Promise<void> {
+    await this.ormRepository.clear()
+  }
 }

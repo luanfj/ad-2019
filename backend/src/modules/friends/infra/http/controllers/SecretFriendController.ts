@@ -3,6 +3,7 @@ import { container } from 'tsyringe'
 import { classToClass } from 'class-transformer'
 
 import CreateSecretFriendService from '@modules/friends/services/CreateSecretFriendService'
+import ResetSecretFriendsListService from '@modules/friends/services/ResetSecretFriendsListService'
 
 export default class SecretFriendController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -16,5 +17,18 @@ export default class SecretFriendController {
     })
 
     return response.json(classToClass(secretFriend))
+  }
+
+  public async destroy(
+    request: Request,
+    response: Response
+  ): Promise<Response> {
+    const resetSecretFriendsList = container.resolve(
+      ResetSecretFriendsListService
+    )
+
+    const reset = await resetSecretFriendsList.execute()
+
+    return response.json(reset)
   }
 }

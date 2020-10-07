@@ -9,4 +9,5 @@ export default interface IFriendsRepository {
   findById(id: ObjectID): Promise<Friend | undefined>
   save(friend: Friend): Promise<Friend>
   findAllFriends(): Promise<Friend[]>
+  deleteFriend(id: ObjectID): Promise<void>
 }

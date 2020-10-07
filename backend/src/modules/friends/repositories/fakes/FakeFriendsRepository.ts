@@ -47,4 +47,10 @@ export default class FakeFriendsRepository implements IFriendsRepository {
   public async findAllFriends(): Promise<Friend[]> {
     return this.friends
   }
+
+  public async deleteFriend(id: ObjectID): Promise<void> {
+    const findIndex = this.friends.findIndex(findFriend => findFriend.id === id)
+
+    this.friends.splice(findIndex, 1)
+  }
 }

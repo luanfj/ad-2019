@@ -38,4 +38,10 @@ export default class FakeSecretFriendsRepository
 
     return findSecret
   }
+
+  public async deleteAllSecretFriends(): Promise<void> {
+    while (this.secretFriends.length) {
+      this.secretFriends.pop()
+    }
+  }
 }

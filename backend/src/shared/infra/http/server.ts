@@ -2,6 +2,7 @@ import 'reflect-metadata'
 
 import express, { Request, Response, NextFunction } from 'express'
 import { errors } from 'celebrate'
+import cors from 'cors'
 import { createConnections } from 'typeorm'
 import 'express-async-errors'
 
@@ -14,6 +15,7 @@ createConnections()
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 app.use(routes)
 

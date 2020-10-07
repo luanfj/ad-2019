@@ -7,4 +7,5 @@ export default interface ISecretFriendsRepository {
   create(data: ICreateSecretFriendDTO): Promise<SecretFriend>
   findFriendById(id: ObjectID): Promise<SecretFriend | undefined>
   findSecretById(id: ObjectID): Promise<SecretFriend | undefined>
+  deleteAllSecretFriends(): Promise<void>
 }

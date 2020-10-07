@@ -29,7 +29,9 @@ export default class FriendsRepository implements IFriendsRepository {
   }
 
   public async findById(id: ObjectID): Promise<Friend | undefined> {
-    const friend = await this.ormRepository.findOne(id)
+    const friend = await this.ormRepository.findOne({
+      where: { _id: id }
+    })
 
     return friend
   }
@@ -42,5 +44,9 @@ export default class FriendsRepository implements IFriendsRepository {
     const friends = await this.ormRepository.find()
 
     return friends
+  }
+
+  public async deleteFriend(id: ObjectID): Promise<void> {
+    await this.ormRepository.findOneAndDelete({ _id: id })
   }
 }

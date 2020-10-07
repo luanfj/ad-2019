@@ -2,7 +2,7 @@ import { injectable, inject } from 'tsyringe'
 
 import IFriendsRepository from '../repositories/IFriendsRepository'
 import Friend from '../infra/typeorm/schemas/Friend'
-
+// ARRUMAR AQUI
 @injectable()
 export default class ListFriendsService {
   constructor(
