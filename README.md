@@ -33,3 +33,5 @@ $ cd backend && yarn dev:server
 # Inicie o frontend
 $ cd frontend && yarn start
 ```
+
+Assim que os amigos secretos são sorteados e os emails são enviados,  é possível verificar o link dos e-mails no terminal
